@@ -1,55 +1,191 @@
 ---
-title: "Actividad 1: Tablero"
+title: "Métodos y simulación Estadística - Actividad 1"
 output: 
   flexdashboard::flex_dashboard:
-    theme:
-      journal
+    Orientation: columns
+    vertical_layout: fill # para que no salga scroll sino que la ventana quede fija 
+      #vertical_layout: scroll # ventana se ajuste 
+    #theme:
+      #journal
     logo: logo_01.jpg
     social: ["menu"]
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+#install.packages("modeest")
+#library (modeest)
 #install.packages("flexdashboard")  # instala paquete flexdashboard
 #install.packages("devtools")       # instala paquete devtools
 #devtools::install_github("dgonxalex80/paqueteMET") # descarga de paqueteMET
 library(paqueteMET)                # activar paqueteMET
-
 data("CarreraLuz22")               # cargar la dataset
+library(dplyr)  
+library(lubridate)  
+library(ggplot2)  
+#library(tm)  
+#library(wordcloud)  
 
 #install.packages("remotes")
 #remotes::install_github("rstudio/bslib")  # descarga paquete que contiene formato
-
-
 ```
 
-Column {data-width=650 .tabset}
------------------------------------------------------------------------
+# Base de Datos {data-icon=fa-database}
+```{r}
+mi_df <- data.frame(CarreraLuz22)
+mi_df
+```
 
-### Chart A
+# Indicadores {data-orientation=columns, data-icon=fa-flag-checkered} 
 
+Columns 1 {data-width=200}
+--------------------------------------------------------------------------------
+### **INDICADORES ESTADISTICOS   (Variables Cuantitativas)**
 ```{r}
 
 ```
 
-### Chart B
+Columns 2  {.tabset .tabset-fade}
+--------------------------------------------------------------------------------
 
+### **INDICADORES DE CENTRO** 
+**Media**
+```{r}
+round(mean(CarreraLuz22$edad, na.rm = TRUE),2)
+```
+La media (promedio) de un conjunto de datos se encuentra al sumar todos los números en el conjunto de datos y luego al dividir entre el número de valores en el conjunto, para este caso 37 años es la edad promedio
+
+**Mediana**
+```{r}
+median(CarreraLuz22$edad, na.rm = TRUE)
+```
+La mediana es el valor medio cuando un conjunto de datos se ordena de menor a mayor, el valor medio para el ejemplo es 36
+
+**Moda**
+```{r}
+library(modeest)
+mfv(CarreraLuz22$edad) #Indica el o los valores con más frecuencia
+```
+La edad que más se repite es 31 años
+
+### **INDICADORES DE DISPERSION**
+**Rango**
+```{r}
+#Valores mínimo y máximo
+range(CarreraLuz22$edad, na.rm = TRUE)
+```
+La edad mínima y máxima de los competidores es 15 y 76 años respectivamante
+
+**Varianza**
+```{r}
+round(var(CarreraLuz22$edad, na.rm = TRUE),2)
+```
+La varianza es una medida de dispersión que representa la variabilidad de una serie de datos respecto a su media
+
+**Desviación Estándar**
+
+```{r}
+round(sd(CarreraLuz22$edad, na.rm = TRUE),2)
+```
+La desviación estándar mide la dispersión de una distribución de datos. Entre más dispersa está una distribución de datos, más grande es su desviación estándar.
+
+**coeficiente de variación**
+
+```{r}
+#Asegurarse de ejecutar previamente el comando "install.packages("FinCal")"
+#install.packages("FinCal")
+library(FinCal)
+round(coefficient.variation(sd=sd(CarreraLuz22$edad), avg = mean(CarreraLuz22$edad)),2)
+```
+En estadística, cuando se desea hacer referencia a la relación entre el tamaño de la media y la variabilidad de la variable, se utiliza el coeficiente de variación
+
+### **INDICADORES DE POSICION**
+
+**Q1 percentil 25**
+```{r}
+prob = c(0.25)
+quantile(CarreraLuz22$edad,prob, na.rm = TRUE)
+```
+El 25% de los competidores tiene 30 años de edad o menos.
+
+**Q2 percentil 50**
+```{r}
+prob = c(0.5)
+quantile(CarreraLuz22$edad,prob, na.rm = TRUE)
+
+```
+El 50% de los competidores tiene 36 años de edad o menos.
+
+**Q3 percentil 75**
+
+```{r}
+prob = c(0.75)
+quantile(CarreraLuz22$edad,prob, na.rm = TRUE)
+```
+El 75% de los competidores tiene 44 años de edad o menos.
+
+### **INDICADORES DE FORMA**
+
+**Coeficiente de Asimetría**
+```{r}
+library(psych)
+round(skew(CarreraLuz22$edad),2)
+```
+Caracteriza el grado de asimetría de una distribución con respecto a su media. La asimetría positiva indica una distribución unilateral que se extiende hacia valores más positivos
+
+**Coeficiente de Curtosis**
+```{r}
+round(kurtosi(CarreraLuz22$edad),2)
+```
+Es una medida del grado de cuántos valores atípicos hay, Una curtosis positiva indica que los datos muestran más valores atípico extremos que una distribución normal.
+
+# Tablas  {data-icon=fa-table}
+Columns 1 {data-width=200}
+--------------------------------------------------------------------------------
+### **TABLAS DE FRECUENCIA   (Variables Cualitativas)**
 ```{r}
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
+Columns 2  {.tabset .tabset-fade}
+--------------------------------------------------------------------------------
 
-### Chart C
-
+### FRECUENCIAS 
+**Frecuencias Absolutas**
 ```{r}
-
+tabla <- table(CarreraLuz22$categoria)
+tabla
 ```
 
-### Chart D
-
+**Frecuencias Absolutas Acumuladas **
 ```{r}
-
+tabla <- table(CarreraLuz22$categoria)
+cumsum(tabla)
 ```
+
+**Frecuencias Relativas**
+```{r}
+tabla <- table(CarreraLuz22$categoria)
+round((prop.table(tabla)),2)
+```
+
+**Frecuencias Relativas Acumuladas **
+```{r}
+tabla <- table(CarreraLuz22$categoria)
+round(cumsum(prop.table(tabla)),2)
+```
+
+
+**Frecuencias Relativas (Porcentajes)**
+```{r}
+tabla <- table(CarreraLuz22$categoria)
+round((prop.table(tabla)*100),2)
+```
+
+**Frecuencias Relativas Acumuladas (Porcentajes) **
+```{r}
+tabla <- table(CarreraLuz22$categoria)
+round(cumsum(prop.table(tabla)*100),2)
+```
+# Gráficos  {data-icon=fa-chart-pie}
 
