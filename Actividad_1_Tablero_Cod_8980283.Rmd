@@ -40,7 +40,7 @@ Para el desarrollo de esta actividad se utilizó la base de datos “CarreraLuz2
 La idea con esta carrera es que las personas puedan aportar, donar al momento de hacer la inscripción para realizar obras de inversión social 
 Se llama la carrera de la Luz porque se realiza en el mes de diciembre.
 
-![Carrera_luz](Imagenes/Carrera_luz.jpg){width='100px'}
+![Carrera_luz](Imagenes/Carrera_luz.jpg)
 
 
 Columns 2  {.tabset .tabset-fade}
@@ -163,6 +163,8 @@ Una tabla de frecuencias muestra de forma ordenada un conjunto de datos estadís
 
 Para el ejemplo se tuvo en cuenta el análisis a las siguientes categorías de participantes: JUVENIL, ABIERTA, VETERANOS A, VETERANOS B, VETERANOS C
 
+![Carrera_luz](Imagenes/Frecuencias_01.jpg)
+
 Columns 2  {.tabset .tabset-fade}
 --------------------------------------------------------------------------------
 
@@ -208,6 +210,8 @@ Columns 1 {data-width=200}
 --------------------------------------------------------------------------------
 ### **GRAFICOS ESTADISTICOS**
 Los gráficos estadísticos son las distintas maneras de representar series de datos estadísticos de diverso tipo y origen para mostrar de manera visual cómo evoluciona una o más variables en comparación con otras. En estadística, los diagramas son muy útiles porque permiten extraer conclusiones de un conjunto de datos sin necesidad de hacer cálculos.
+
+![Carrera_luz](Imagenes/graficos.jpg)
 
 ```{r}
 
