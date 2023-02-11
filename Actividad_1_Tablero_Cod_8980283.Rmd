@@ -4,31 +4,18 @@ output:
   flexdashboard::flex_dashboard:
     Orientation: columns
     vertical_layout: fill # para que no salga scroll sino que la ventana quede fija 
-      #vertical_layout: scroll # ventana se ajuste 
-    #theme:
-      #journal
     logo: Imagenes/logo_03.jpg
     social: ["menu"]
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-#install.packages("modeest")
-#library (modeest)
-#install.packages("flexdashboard")  # instala paquete flexdashboard
-#install.packages("devtools")       # instala paquete devtools
-#devtools::install_github("dgonxalex80/paqueteMET") # descarga de paqueteMET
 library(paqueteMET)                # activar paqueteMET
 data("CarreraLuz22")               # cargar la dataset
 library(dplyr)  
 library(lubridate)  
 library(ggplot2) 
 library(plotrix)
-#library(tm)  
-#library(wordcloud)  
-
-#install.packages("remotes")
-#remotes::install_github("rstudio/bslib")  # descarga paquete que contiene formato
 ```
 
 # Base de Datos {data-icon=fa-database}
@@ -59,6 +46,8 @@ Columns 1 {data-width=200}
 --------------------------------------------------------------------------------
 ### **INDICADORES ESTADISTICOS   (Variables Cuantitativas)**
 INDICADOR ESTADÍSTICO Es el dato numérico, resultado de un proceso que cuantifica científicamente una característica de una muestra. “Es el elemento característico que describe una situación permitiendo su análisis”.Para el ejemplo la muestra tomada fue la edad de los participantes.
+
+![Carrera_luz](Imagenes/Indicadores.jpg)
 
 Columns 2  {.tabset .tabset-fade}
 --------------------------------------------------------------------------------
@@ -163,7 +152,7 @@ Una tabla de frecuencias muestra de forma ordenada un conjunto de datos estadís
 
 Para el ejemplo se tuvo en cuenta el análisis a las siguientes categorías de participantes: JUVENIL, ABIERTA, VETERANOS A, VETERANOS B, VETERANOS C
 
-![Carrera_luz](Imagenes/Frecuencias_01.jpg)
+![Carrera_luz](Imagenes/Frecuencias.jpg)
 
 Columns 2  {.tabset .tabset-fade}
 --------------------------------------------------------------------------------
