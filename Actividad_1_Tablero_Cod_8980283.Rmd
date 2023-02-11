@@ -7,7 +7,7 @@ output:
       #vertical_layout: scroll # ventana se ajuste 
     #theme:
       #journal
-    logo: Imagenes/logo_01.jpg
+    logo: Imagenes/logo_02.jpg
     social: ["menu"]
 ---
 
