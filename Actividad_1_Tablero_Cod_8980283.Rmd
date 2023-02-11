@@ -7,7 +7,7 @@ output:
       #vertical_layout: scroll # ventana se ajuste 
     #theme:
       #journal
-    logo: Imagenes/logo_02.jpg
+    logo: Imagenes/logo_03.jpg
     social: ["menu"]
 ---
 
@@ -40,10 +40,8 @@ Para el desarrollo de esta actividad se utilizó la base de datos “CarreraLuz2
 La idea con esta carrera es que las personas puedan aportar, donar al momento de hacer la inscripción para realizar obras de inversión social 
 Se llama la carrera de la Luz porque se realiza en el mes de diciembre.
 
-###imagen
-```{r}
+![Carrera_luz](Imagenes/Carrera_luz.jpg){width='100px'}
 
-```
 
 Columns 2  {.tabset .tabset-fade}
 --------------------------------------------------------------------------------
